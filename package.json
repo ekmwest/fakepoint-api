@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "name": "fakepoint-api",
+  "version": "1.1.0",
+  "description": "REST API with fake data for prototyping",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node ./seed/seed.js",
+    "dev": "nodemon server.js"
+  },
+  "author": "ekmwest",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ekmwest/fakepoint-api.git"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "helmet": "4.2.0",
+    "json-server": "0.16.3"
+  }
+}

@@ -1,0 +1,39 @@
+body {
+    font-family: "Open sans", sans-serif;
+    color: #24292e;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+main {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 0 6rem;
+}
+
+h1 {
+    font-size: 3rem;
+    margin: 6rem 0 1rem;
+}
+
+.tl {
+    font-size: 1.4rem;
+    font-style: italic;
+    margin-bottom: 4rem;
+}
+
+h2 {
+    font-size: 1.3rem;
+    margin: 3rem 0 .5rem;
+}
+
+code, pre {
+    font-family: Consolas, monospace;
+}
+
+code {
+    background: #f6f8fa;
+    font-size: 16px;
+    padding: 2px 4px;
+    border-radius: 2px;
+}

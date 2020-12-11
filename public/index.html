@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fakepoint API</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/prism.css" />
+    <script src="/prism.js"></script>
+</head>
+
+<body>
+    <main>
+        <h1>Fakepoint API</h1>
+        <p class="tl">REST API with fake data for prototyping.</p>
+
+
+
+        <h2>Authorization</h2>
+        <p><code>Authorization: Basic API_KEY</code> header is required for all requests.</p> 
+        <pre><code class="language-javascript">// Get users
+fetch('https://api.fakepoint.net/users', {
+    headers: {
+        'Authorization': 'Basic API_KEY' // <= Replace with real API_KEY
+    }
+})
+.then(response => response.json())
+.then(users => console.log(users))</code></pre>
+        
+
+
+        <h2>Content Type</h2>
+        <p>POST, PUT, and PATCH requests must include <code>Content-Type: application/json</code> header.</p>
+        <pre><code class="language-javascript">// Add a comment               
+fetch('https://api.fakepoint.net/posts/1/comments', {
+    method: 'POST',
+    headers: {
+        'Authorization': 'Basic API_KEY',  // <= Always required
+        'Content-Type': 'application/json' // <= Required for POST, PUT, PATCH
+    },
+    body: JSON.stringify({ content: 'Lorem ipsum', user_id: 2 })
+})
+.then(response => response.json())
+.then(comment => console.log(comment))</code></pre>
+
+
+
+        <h2>https only</h2>
+        <p>Use the api over https only. Edge servers will redirect to https, but browsers don't allow redirects for preflights.</p>
+
+
+
+        <h2>Search API</h2>
+        <p>Filter</p>
+        <pre class="pull-up"><code class="language-json">GET /courses?name=JavaScript
+GET /comments?user_id=1&post_id=2</code></pre>
+
+        <p>Limit collection (default is 10)</p>
+        <pre class="pull-up"><code class="language-json">GET /courses?_limit=30</code></pre>
+
+        <p>Pagination</p>
+        <pre class="pull-up"><code class="language-json">GET /users?_page=3</code></pre>
+
+        <p>Sorting</p>
+        <pre class="pull-up"><code class="language-json">GET /posts?_sort=updated_at&_order=desc</code></pre>
+
+        <p>Searching</p>
+        <pre class="pull-up"><code class="language-json">GET /posts?q=ipsum</code></pre>
+
+        <p>Embed children and expand parents</p>
+        <pre class="pull-up"><code class="language-json">GET /courses?_embed=posts
+GET /comments/1?_expand=post
+GET /comments/1?_expand=post&_expand=user</code></pre>      
+
+
+        <h2>Persistance</h2>
+        <p>Changes are temporarily saved. The database will be automatically restored to it's original state after 30 min of inactivity.</p>
+
+    </main>
+
+</body>
+
+</html>
